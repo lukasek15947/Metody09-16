@@ -56,6 +56,7 @@ namespace Metody09_16
 
         public static int PocetSlov1(string retezec, out string smazaneCislice)
         {
+            //První způsob
             int pocetslov = 0;
             smazaneCislice = "";
             char[] separators = {' '};
@@ -76,6 +77,55 @@ namespace Metody09_16
             }
             smazaneCislice = retezec;
             return pocetslov;
+        }
+
+        public static int PocetSlov2(ref string retezec)
+        {
+            //Druhý způsob
+            int pocetslov = 0;
+            char[] separators = { ' ' };
+            string[] poleSlov = retezec.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            pocetslov = poleSlov.Length;
+            int i = 0;
+            while (i < retezec.Length)
+            {
+                if (Char.IsNumber(retezec[i]))
+                {
+                    retezec = retezec.Remove(i, 1);
+                }
+                else ++i;
+            }
+            return pocetslov;
+        }
+
+        public static bool ObsahujeSlovo(string text, out string nejdelsiSlovo, out string nejkratsiSlovo)
+        {
+            bool obsahujeslovo = false;
+            nejdelsiSlovo = "";
+            nejkratsiSlovo = "";
+            int pocetPismenMax = 0;
+            int pocetPismenMin = text.Length;
+            char[] separators = { ' ' };
+            string[] poleSlov = text.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            foreach(string s in poleSlov)
+            {
+                if(s.Length >= 1)
+                {
+                    obsahujeslovo = true;
+                }
+                if(s.Length>pocetPismenMax)
+                {
+                    pocetPismenMax = s.Length;
+                    nejdelsiSlovo = s;
+                }
+                if (s.Length < pocetPismenMax)
+                {
+                    pocetPismenMin = s.Length;
+                    nejkratsiSlovo = s;
+                }
+            }
+
+            return obsahujeslovo;
         }
     }
 }

@@ -52,5 +52,18 @@ namespace Metody09_16
             MessageBox.Show("Počet slov je: " + pocetSlov);
             textBox5.Text = smazaneCislice;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string s = textBox6.Text;
+            int pocetSlov = Vypocty.PocetSlov2(ref s);
+            MessageBox.Show("Počet slov je: " + pocetSlov);
+            textBox6.Text = s;
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
