@@ -51,8 +51,31 @@ namespace Metody09_16
                     }
                 }
             }
-
             return obsahujeCislici;
+        }
+
+        public static int PocetSlov1(string retezec, out string smazaneCislice)
+        {
+            int pocetslov = 0;
+            smazaneCislice = "";
+            char[] separators = {' '};
+            string[] poleSlov = retezec.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            /*foreach (string slovo in poleSlov)
+            {
+                ++pocetslov;
+            }*/
+            pocetslov = poleSlov.Length;
+            int i = 0;
+            while (i < retezec.Length)
+            {
+                if(Char.IsNumber(retezec[i]))
+                {
+                    retezec = retezec.Remove(i, 1);
+                }
+                else ++i;
+            }
+            smazaneCislice = retezec;
+            return pocetslov;
         }
     }
 }

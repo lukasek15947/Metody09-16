@@ -32,16 +32,25 @@ namespace Metody09_16
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string idk = textBox4.Text;
+            string text = textBox4.Text;
             int cifSoucet = 0, lichCifSoucet = 0, sudCifSoucet = 0;
-            if (Vypocty.ObsahujeCislici(idk, out cifSoucet, out lichCifSoucet, out sudCifSoucet))
+            if (Vypocty.ObsahujeCislici(text, out cifSoucet, out lichCifSoucet, out sudCifSoucet))
             {
-                MessageBox.Show("Obsahuje číslici");
+                MessageBox.Show("Obsahuje číslici v textu");
                 MessageBox.Show("Ciferný součet je " + cifSoucet);
                 MessageBox.Show("Ciferný součet lichých čísel je " + lichCifSoucet);
                 MessageBox.Show("Ciferný součet sudých čísel je " + sudCifSoucet);
             }
             else MessageBox.Show("Neobsahuje cifry");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string s = textBox5.Text;
+            string smazaneCislice;
+            int pocetSlov = Vypocty.PocetSlov1(s, out smazaneCislice);
+            MessageBox.Show("Počet slov je: " + pocetSlov);
+            textBox5.Text = smazaneCislice;
         }
     }
 }
