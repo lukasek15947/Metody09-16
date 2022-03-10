@@ -102,7 +102,7 @@ namespace Metody09_16
         {
             bool obsahujeslovo = false;
             nejdelsiSlovo = "";
-            nejkratsiSlovo = "";
+            nejkratsiSlovo = text;
             int pocetPismenMax = 0;
             int pocetPismenMin = text.Length;
             char[] separators = { ' ' };
@@ -118,14 +118,37 @@ namespace Metody09_16
                     pocetPismenMax = s.Length;
                     nejdelsiSlovo = s;
                 }
-                if (s.Length < pocetPismenMax)
+                if (s.Length < pocetPismenMin)
                 {
                     pocetPismenMin = s.Length;
                     nejkratsiSlovo = s;
                 }
             }
-
             return obsahujeslovo;
+        }
+
+        public static bool JeAlfanum(string s, out int pocetMalychPismen, out int pocetVelkychPismen, out int pocetJinychZnaku)
+        {
+            bool jealfanum = false;
+            pocetMalychPismen = 0;
+            pocetVelkychPismen = 0;
+            pocetJinychZnaku = 0;
+            
+            for (int i = 0; i < s.Length; ++i)
+            {
+                if (Char.IsLetterOrDigit(s[i]))
+                {
+                    jealfanum = true;
+                    if (Char.IsUpper(s[i])) ++pocetVelkychPismen;
+                    else if (Char.IsLower(s[i])) ++pocetMalychPismen;
+                }
+                else
+                {
+                    ++pocetJinychZnaku;
+                    jealfanum = false;
+                } 
+            }
+            return jealfanum;
         }
     }
 }

@@ -65,5 +65,41 @@ namespace Metody09_16
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string s = textBox7.Text;
+            string nejdelsislovo, nejkratsislovo;
+            if(Vypocty.ObsahujeSlovo(s, out nejdelsislovo, out nejkratsislovo))
+            {
+                MessageBox.Show("Obsahuje více než jedno slovo");
+                MessageBox.Show("Nejdelší slovo " + nejdelsislovo);
+                MessageBox.Show("Nejkratší slovo " + nejkratsislovo);
+            }
+            else
+            {
+                MessageBox.Show("Řetězec neobsahuje ani jedno slovo");
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string s = textBox8.Text;
+            int pocetVelkych, pocetMalych, pocetJinychZnaku;
+            if(Vypocty.JeAlfanum(s, out pocetMalych, out pocetVelkych, out pocetJinychZnaku))
+            {
+                MessageBox.Show("Je alfanumerický");
+                MessageBox.Show("Počet malých: " + pocetMalych);
+                MessageBox.Show("Počet velkých: " + pocetVelkych);
+                MessageBox.Show("Počet jiných " + pocetJinychZnaku);
+            }
+            else
+            {
+                MessageBox.Show("Není alfanumerický");
+                MessageBox.Show("Počet malých: " + pocetMalych);
+                MessageBox.Show("Počet velkých: " + pocetVelkych);
+                MessageBox.Show("Počet jiných " + pocetJinychZnaku);
+            }
+        }
     }
 }
