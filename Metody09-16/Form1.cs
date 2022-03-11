@@ -101,5 +101,20 @@ namespace Metody09_16
                 MessageBox.Show("Počet jiných " + pocetJinychZnaku);
             }
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            string s1 = textBox9.Text;
+            string s2 = textBox10.Text;
+            int pocetPozicOdlisnosti, prvniIndexOdlisnosti;
+            if (Vypocty.Identicke(s1, s2, out pocetPozicOdlisnosti, out prvniIndexOdlisnosti))
+            {
+                MessageBox.Show("Jsou identicke");
+            }
+            else
+            {
+                MessageBox.Show("Nejsou identicke, pocet odlisnosti je: " + pocetPozicOdlisnosti + " a prvni ndex odlisnosti je " + prvniIndexOdlisnosti);
+            }
+        }
     }
 }

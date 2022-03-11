@@ -150,5 +150,61 @@ namespace Metody09_16
             }
             return jealfanum;
         }
+
+        public static bool Identicke(string s1, string s2, out int pocetPozicOdlisnosti, out int prvniIndexOdlisnosti)
+        {
+            bool jsouIdenticke = false;
+            pocetPozicOdlisnosti = 0;
+            prvniIndexOdlisnosti = -1;
+            if (s1==s2)
+            {
+                jsouIdenticke = true;
+                pocetPozicOdlisnosti = 0;
+                prvniIndexOdlisnosti = -1;
+            }
+            else if(s1.Length == s2.Length)
+            {
+                jsouIdenticke = false;
+                for (int i = 0; i < s1.Length; ++i)
+                {
+                    if(s1[i] != s2[i] && prvniIndexOdlisnosti == -1)
+                    {
+                        ++pocetPozicOdlisnosti;
+                        prvniIndexOdlisnosti = i;
+                    }
+                }
+            }
+            else
+            {
+                jsouIdenticke = false;
+                if (s1.Length > s2.Length)
+                {
+                    for (int i = 0; i < s2.Length; ++i)
+                    {
+                        if (s2[i] != s1[i])
+                        {
+                            ++pocetPozicOdlisnosti;
+                            prvniIndexOdlisnosti = i;
+                        }
+                    }
+                    pocetPozicOdlisnosti = pocetPozicOdlisnosti + (s1.Length - s2.Length);
+                }
+                else
+                {
+                    jsouIdenticke = false;
+                    for (int i = 0; i < s1.Length; ++i)
+                    {
+                        if (s1[i] != s2[i])
+                        {
+                            ++pocetPozicOdlisnosti;
+                            prvniIndexOdlisnosti = i;
+                        }
+                    }
+                    pocetPozicOdlisnosti = pocetPozicOdlisnosti + (s2.Length - s1.Length);
+
+                }
+            }
+            return jsouIdenticke;
+        }
     }
 }
